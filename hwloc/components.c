@@ -427,7 +427,44 @@ hwloc_disc_component_register(struct hwloc_disc_component *component,
   return 0;
 }
 
-#include "static-components.h"
+#ifdef _WIN32
+
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_noos_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_xml_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_synthetic_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_xml_nolibxml_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_windows_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_x86_component;
+static const struct hwloc_component* hwloc_static_components[] = {
+  &hwloc_noos_component,
+  &hwloc_xml_component,
+  &hwloc_synthetic_component,
+  &hwloc_xml_nolibxml_component,
+  &hwloc_windows_component,
+  &hwloc_x86_component,
+  NULL
+};
+
+#else
+
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_noos_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_xml_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_synthetic_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_xml_nolibxml_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_linux_component;
+HWLOC_DECLSPEC extern const struct hwloc_component hwloc_x86_component;
+static const struct hwloc_component* hwloc_static_components[] = {
+  &hwloc_noos_component,
+  &hwloc_xml_component,
+  &hwloc_synthetic_component,
+  &hwloc_xml_nolibxml_component,
+  &hwloc_linux_component,
+  &hwloc_x86_component,
+  NULL
+};
+
+#endif
+
 
 static void (**hwloc_component_finalize_cbs)(unsigned long);
 static unsigned hwloc_component_finalize_cb_count;

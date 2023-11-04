@@ -209,7 +209,7 @@ static PFN_VIRTUALFREEEX VirtualFreeExProc;
 typedef BOOL (WINAPI *PFN_QUERYWORKINGSETEX)(HANDLE hProcess, PVOID pv, DWORD cb);
 static PFN_QUERYWORKINGSETEX QueryWorkingSetExProc;
 
-typedef NTSTATUS (WINAPI *PFN_RTLGETVERSION)(OSVERSIONINFOEX*);
+typedef LONG (WINAPI *PFN_RTLGETVERSION)(OSVERSIONINFOEX*);
 PFN_RTLGETVERSION RtlGetVersionProc;
 
 static void hwloc_win_get_function_ptrs(void)

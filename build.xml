@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<Module>
+	
+	<GlobalSolutionName>ThirdParty</GlobalSolutionName>
+	<GlobalNamespace>potato</GlobalNamespace>
+
+	<StaticLibrary>
+		<Name>thirdparty_hwloc</Name>
+		<SourceRoot>hwloc</SourceRoot>
+		<ExportedIncludeDirectory>include</ExportedIncludeDirectory>
+		<LocalIncludeDirectory>include</LocalIncludeDirectory>
+		<ThirdParty>true</ThirdParty>
+		<ThirdPartySourceFile>
+			base64.c;
+			bind.c;
+			bitmap.c;
+			components.c;
+			cpukinds.c;
+			diff.c;
+			distances.c;
+			memattrs.c;
+			misc.c;
+			pci-common.c;
+			shmem.c;
+			topology.c;
+			traversal.c;
+			topology-fake.c;
+			topology-synthetic.c;
+			topology-noos.c;
+			topology-xml-nolibxml.c;
+			topology-xml.c
+		</ThirdPartySourceFile>
+
+		<FilterPlatform include="windows">
+			<ThirdPartySourceFile>
+				topology-windows.c;
+				topology-x86.c
+			</ThirdPartySourceFile>
+		</FilterPlatform>
+
+		<FilterPlatform include="linux">
+			<ThirdPartySourceFile>
+				topology-linux.c;
+				topology-x86.c;
+				topology-pci.c;
+				topology-netbsd.c
+			</ThirdPartySourceFile>
+		</FilterPlatform>
+
+		<FilterPlatform include="darwin">
+			<ThirdPartySourceFile>
+				topology-darwin.c
+			</ThirdPartySourceFile>
+		</FilterPlatform>
+	</StaticLibrary>
+
+</Module>
